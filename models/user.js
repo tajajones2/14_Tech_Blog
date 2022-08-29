@@ -6,36 +6,31 @@ const sequelize = require("../config/connection");
 class User extends Model {}
 
 User.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-        },
-        username: {
-            type: DataTypes.STRING,
-            unique: true,
-            allowNull: false,
-        },
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    username: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+    },
 
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    onDelete: "CASCADE",
+    modelName: "user",
+  }
+);
 
-    
-    }, {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        onDelete: "CASCADE",
-        modelName: "user"
-
-
-
-    }
-    
-    );
-
-    module.export = User;
+module.export = User;
