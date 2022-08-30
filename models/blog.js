@@ -33,6 +33,8 @@ Blog.init(
         key: "id",
       },
     },
+
+  
   },
 
   {
