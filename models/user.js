@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const { DELETE } = require("sequelize/types/query-types");
+
 
 const sequelize = require("../config/connection");
 
@@ -33,4 +33,4 @@ User.init(
   }
 );
 
-module.export = User;
+module.exports = User;
