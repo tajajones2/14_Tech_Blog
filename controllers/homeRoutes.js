@@ -4,9 +4,9 @@ const { User, Blog, Comment } = require("../models");
 router.get("/", async (req, res) => {
   try {
     // get all user data
-    // const allUsers = await User.findAll({
-    //     include: []
-    // });
+    const allUsers = await User.findAll({
+        include: []
+    });
 
     res.send("hello world!")
   } catch (error) {
