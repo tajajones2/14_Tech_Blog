@@ -5,43 +5,51 @@ router.get("/", async (req, res) => {
   try {
     // get all user data
     const blogData = await Blog.findAll({
-        include: [{
-          model: User,
+      include: [{
+          model: User
         }]
     });
 
-  //serialize data so the template can read it
-const blogs = blogData.map((project) => project.get({ plain: true }));
+    //serialize data so the template can read it
+    // const blogs = blogData.map((project) => project.get({ plain: true }));
 
     // res.send("homepage",)
-    res.json(blogs)
-
-
+    res.status(200), res.json(blogData);
   } catch (error) {
     res.status(500).json(error);
   }
 });
 
-// router.get ("/blog", async (req, res) => {
-//   if ()
-//   try { const blogData = await Blog.findAll({
-//     where: { user_id: },
-//     include: [
-//       model: User
-//     ]
-//   })
 
-//   };
-// })
+router.get("/blog/:id", async (req, res) => {
+  try {
+    const blogData = await Blog.findOne({
+      where: [{
+          id: req.params.id
+        }]
+    })
+    // const blogs = blogData.map((project) => project.get({ plain: true }));
 
+    // this is to send data back
+    res.status(200).json(blogData)
 
-
+    ////////
+  } catch (error) {
+    res.status(500). json(error);
+  }
+});
 
 
 
 
 
 module.exports = router;
+
+
+
+
+
+
 
 // router.get("/", async (req, res) => {
 //   try {
