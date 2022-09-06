@@ -22,8 +22,10 @@ router.get("/", async (req, res) => {
   }
 });
 
+// get one blog post
 router.get("/blog/:id", async (req, res) => {
   try {
+    // get a caertain post from db
     const blogData = await Blog.findByPk(req.params.id, {
       include: [
           { model: User, attributes: {exclude: ["password"] } },
@@ -45,6 +47,9 @@ router.get("/blog/:id", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+
+// router.get ("/dashboard", async (req, res))
 
 module.exports = router;
 
